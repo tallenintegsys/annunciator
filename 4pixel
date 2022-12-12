@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# 1 2
+# 3 4
+
+c=("\u0020" "\u2598" "\u259d" "\u2580" "\u2596" "\u258c" "\u259e" "\u259b" "\u2597" "\u259a" "\u2590" "\u259c" "\u2584" "\u2599" "\u259f" "\u2588")
+echo -e "->\u0020\u2598\u259d\u2580\u2596\u258c\u259e\u259b\u2597\u259a\u2590\u259c\u2584\u2599\u259f\u2588<-"
+
+for x in ${c[@]}; do
+        echo -en "$x"
+done
+
+echo -e "\n\e[2B\e[?25l"
+
+while : ; do
+        for (( x=0; x<16; x++ )); do
+                echo -en "${c[x]}\r"
+                sleep 1
+        done
+done
